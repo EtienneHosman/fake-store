@@ -17,13 +17,13 @@ function handleWishlistClick(){
 
 <template>
   <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow flex-col flex justify-between">
-    <a href="#">
+    <router-link :to="{name: 'ProductView', params: {id: product.id}}">
       <img class="p-8 h-52 object-contain w-52 rounded-t-lg mx-auto" :alt="product.title" :src="product.image" />
-    </a>
+    </router-link>
     <div class="px-5 pb-5 align-bottom">
-      <a href="#">
-        <h5 class="text-xl font-semibold tracking-tight text-gray-900">{{product.title}}</h5>
-      </a>
+      <router-link :to="{name: 'ProductView', params: {id: product.id}}">
+        <h5 class="text-xl font-semibold tracking-tight text-sky-600 hover:underline">{{product.title}}</h5>
+      </router-link>
       <div class="flex items-center">
         <svg class="w-4 h-4 text-yellow-300 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
           <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
@@ -40,7 +40,7 @@ function handleWishlistClick(){
                              :class="store.list.includes(product) ? 'text-red-300' : 'text-gray-400 hover:text-red-300'"
                              class="mx-4 cursor-pointer transition-all hover:scale-110"
           />
-          <button href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Add to cart</button>
+          <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Add to cart</button>
         </div>
       </div>
     </div>
