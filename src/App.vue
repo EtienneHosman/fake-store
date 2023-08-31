@@ -1,9 +1,12 @@
 <script setup>
 import AppHeader from "@/components/AppHeader.vue";
 import {usePersistWishlist} from "@/composables/usePersistWishlist";
+import {onMounted} from "vue";
 
 usePersistWishlist()
-
+onMounted(() => {
+  console.log("No errors here! ❤️")
+})
 </script>
 
 <template>

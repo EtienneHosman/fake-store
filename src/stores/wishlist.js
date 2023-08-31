@@ -13,6 +13,16 @@ export const useWishlistStore = defineStore('wishlist', () => {
     function addToList(product) {
         list.value.set(product.id, product)
     }
+    function isInList(id){
+        return Boolean(list.value.get(id))
+    }
+    function toggleWishlistItem(product){
+        if (isInList(product.id)) {
+            removeFromList(product.id)
+        } else {
+            addToList(product)
+        }
+    }
 
-    return { list, listLength, removeFromList, addToList}
+    return { list, listLength, removeFromList, addToList, isInList, toggleWishlistItem}
 })

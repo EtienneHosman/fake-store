@@ -2,6 +2,9 @@
 import {useProductsStore} from "@/stores/products";
 import {useWishlistStore} from "@/stores/wishlist"
 import RatingBlock from "@/components/RatingBlock.vue";
+import Card from "@/components/Card.vue";
+import AddToCartButton from "@/components/AddToCartButton.vue";
+import AddToWishlistButton from "@/components/AddToWishlistButton.vue";
 
 const props = defineProps({
   product: Object
@@ -10,17 +13,10 @@ const props = defineProps({
 const store = useWishlistStore()
 const productStore = useProductsStore()
 
-function handleWishlistClick(){
-  if (store.list.get(props.product.id)) {
-    store.removeFromList(props.product.id)
-  } else {
-    store.addToList(props.product)
-  }
-}
 </script>
 
 <template>
-  <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow flex-col flex justify-between">
+  <Card class="flex-col flex justify-between">
     <router-link :to="{name: 'ProductView', params: {id: product.id}}">
       <img @click="productStore.setSelectedProduct(product)" class="p-8 h-52 object-contain w-52 rounded-t-lg mx-auto" :alt="product.title" :src="product.image" />
     </router-link>
@@ -31,15 +27,16 @@ function handleWishlistClick(){
       <RatingBlock :rating="product.rating"/>
       <div class="flex items-center justify-between">
         <span class="text-3xl font-bold text-gray-900">€{{ product.price }}</span>
-        <div>
-          <font-awesome-icon size="xl" @click="handleWishlistClick"
-                             :icon="store.list.get(product.id) ? 'fa-solid fa-heart' : 'fa-regular fa-heart'"
-                             :class="store.list.get(product.id) ? 'text-red-300' : 'text-gray-400 hover:text-red-300'"
-                             class="mx-4 cursor-pointer transition-all hover:scale-110"
-          />
-          <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Add to cart</button>
+        <div class="inline-flex">
+<!--          <font-awesome-icon size="xl" @click="handleWishlistClick"-->
+<!--                             :icon="store.list.get(product.id) ? 'fa-solid fa-heart' : 'fa-regular fa-heart'"-->
+<!--                             :class="store.list.get(product.id) ? 'text-red-300' : 'text-gray-400 hover:text-red-300'"-->
+<!--                             class="mx-4 cursor-pointer transition-all hover:scale-110"-->
+<!--          />-->
+          <AddToWishlistButton @click="store.toggleWishlistItem(product)" class="self-center mx-4" :in-wishlist="store.isInList(product.id)" icon-only/>
+          <AddToCartButton rounded>Add to cart</AddToCartButton>
         </div>
       </div>
     </div>
-  </div>
+  </Card>
 </template>
