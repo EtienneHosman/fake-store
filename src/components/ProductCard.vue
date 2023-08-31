@@ -11,7 +11,7 @@ const store = useWishlistStore()
 const productStore = useProductsStore()
 
 function handleWishlistClick(){
-  if (store.list.includes(props.product)) {
+  if (store.list.get(props.product.id)) {
     store.removeFromList(props.product.id)
   } else {
     store.addToList(props.product)
@@ -33,8 +33,8 @@ function handleWishlistClick(){
         <span class="text-3xl font-bold text-gray-900">€{{ product.price }}</span>
         <div>
           <font-awesome-icon size="xl" @click="handleWishlistClick"
-                             :icon="store.list.includes(product) ? 'fa-solid fa-heart' : 'fa-regular fa-heart'"
-                             :class="store.list.includes(product) ? 'text-red-300' : 'text-gray-400 hover:text-red-300'"
+                             :icon="store.list.get(product.id) ? 'fa-solid fa-heart' : 'fa-regular fa-heart'"
+                             :class="store.list.get(product.id) ? 'text-red-300' : 'text-gray-400 hover:text-red-300'"
                              class="mx-4 cursor-pointer transition-all hover:scale-110"
           />
           <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Add to cart</button>

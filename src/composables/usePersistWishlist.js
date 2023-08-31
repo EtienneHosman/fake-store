@@ -7,7 +7,7 @@ export function usePersistWishlist() {
     const store = useWishlistStore()
 
     const unsub = store.$subscribe(() => {
-        localStorage.setItem(WISHLIST_STORAGE, JSON.stringify(store.list))
+        localStorage.setItem(WISHLIST_STORAGE, JSON.stringify(Array.from(store.list.entries())))
     })
 
     onUnmounted(() => {

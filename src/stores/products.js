@@ -2,13 +2,15 @@ import {defineStore} from "pinia";
 import {ref} from "vue";
 
 export const useProductsStore = defineStore('products', () => {
-    const products = ref([])
+    const products = ref(new Map())
     const selectedProduct = ref(null)
 
     function fetchProducts() {
         return fetch('https://fakestoreapi.com/products/')
             .then(res => res.json())
-            .then(json => products.value = json)
+            .then(json => {
+                products.value = new Map(json.map(el => [el.id, el]))
+            })
             .catch(err => console.log(err))
     }
     function setSelectedProduct(product){

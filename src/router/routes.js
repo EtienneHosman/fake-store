@@ -3,5 +3,5 @@ import ProductView from "@/views/ProductView.vue";
 
 export const routes = [
     {path: '/', name: "Home", component: Home},
-    {path: '/product/:id', name:"ProductView", component: ProductView, props: true}
+    {path: '/product/:id', name:"ProductView", component: ProductView, props: ({params}) => ({id: Number.parseInt(params.id)})}
 ]
