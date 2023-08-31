@@ -8,7 +8,7 @@ usePersistWishlist()
 
 <template>
   <AppHeader/>
-  <div class="container mx-auto mt-4">
+  <div class="container mx-auto my-4">
     <router-view/>
   </div>
 </template>
