@@ -4,8 +4,10 @@ import {useWishlistStore} from "@/stores/wishlist";
 import RatingBlock from "@/components/RatingBlock.vue";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import AddToCartButton from "@/components/AddToCartButton.vue";
+import {useProductsStore} from "@/stores/products";
 
 const store = useWishlistStore()
+const productStore = useProductsStore()
 </script>
 
 <template>
@@ -15,9 +17,13 @@ const store = useWishlistStore()
       <ul role="list" class="divide-y divide-gray-100">
         <li class="flex justify-between gap-x-6 py-5" v-for="[key,value] in store.list" :key="key">
           <div class="flex min-w-0 gap-x-4">
-            <img class="h-24 w-24 flex-none object-contain" :src="value.image" :alt="value.title">
+            <router-link :to="{name: 'ProductView', params:{id: value.id}}">
+              <img @click="productStore.setSelectedProduct(value)" class="h-24 w-24 flex-none object-contain" :src="value.image" :alt="value.title">
+            </router-link>
             <div class="min-w-0 flex-auto">
-              <p class="text-xl font-semibold leading-6 text-gray-900 max-w-sm">{{ value.title }}</p>
+              <router-link :to="{name: 'ProductView', params:{id: value.id}}">
+                <p @click="productStore.setSelectedProduct(value)" class="text-xl font-semibold leading-6 text-gray-900 max-w-sm hover:text-sky-600 hover:underline">{{ value.title }}</p>
+              </router-link>
               <p class="text-xl font-bold text-gray-900">€{{ value.price }}</p>
               <RatingBlock :rating="value.rating"/>
             </div>
