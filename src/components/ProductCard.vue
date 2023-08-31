@@ -25,14 +25,9 @@ const productStore = useProductsStore()
         <h5 @click="productStore.setSelectedProduct(product)" class="text-xl font-semibold tracking-tight text-sky-600 hover:underline">{{product.title}}</h5>
       </router-link>
       <RatingBlock :rating="product.rating"/>
-      <div class="flex items-center justify-between">
-        <span class="text-3xl font-bold text-gray-900">€{{ product.price }}</span>
-        <div class="inline-flex">
-<!--          <font-awesome-icon size="xl" @click="handleWishlistClick"-->
-<!--                             :icon="store.list.get(product.id) ? 'fa-solid fa-heart' : 'fa-regular fa-heart'"-->
-<!--                             :class="store.list.get(product.id) ? 'text-red-300' : 'text-gray-400 hover:text-red-300'"-->
-<!--                             class="mx-4 cursor-pointer transition-all hover:scale-110"-->
-<!--          />-->
+      <div class="">
+        <p class="text-3xl font-bold text-gray-900">€{{ product.price }}</p>
+        <div class="inline-flex justify-end w-full">
           <AddToWishlistButton @click="store.toggleWishlistItem(product)" class="self-center mx-4" :in-wishlist="store.isInList(product.id)" icon-only/>
           <AddToCartButton rounded>Add to cart</AddToCartButton>
         </div>

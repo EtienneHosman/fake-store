@@ -14,7 +14,3 @@ onMounted(async () => {
     <ProductCard v-for="[key, value] in store.products" :key="key" :product="value" class="min-w-full md:mx-auto"/>
   </div>
 </template>
-
-<style scoped>
-
-</style>

@@ -19,7 +19,3 @@ const props = defineProps({
     </span>
   </button>
 </template>
-
-<style scoped>
-
-</style>

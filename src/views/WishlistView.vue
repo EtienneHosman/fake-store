@@ -17,12 +17,12 @@ const store = useWishlistStore()
           <div class="flex min-w-0 gap-x-4">
             <img class="h-24 w-24 flex-none object-contain" :src="value.image" :alt="value.title">
             <div class="min-w-0 flex-auto">
-              <p class="text-xl font-semibold leading-6 text-gray-900">{{ value.title }}</p>
+              <p class="text-xl font-semibold leading-6 text-gray-900 max-w-sm">{{ value.title }}</p>
               <p class="text-xl font-bold text-gray-900">€{{ value.price }}</p>
               <RatingBlock :rating="value.rating"/>
             </div>
           </div>
-          <div class="flex flex-row items-start">
+          <div class="inline-flex flex-row items-start">
             <AddToCartButton>Add to Cart</AddToCartButton>
             <button class="py-2 px-4 text-gray-400 hover:border-red-400 border ml-2 rounded hover:text-red-400" @click="store.removeFromList(value.id)">
               <FontAwesomeIcon icon="fa-solid fa-trash"/>
@@ -45,7 +45,3 @@ const store = useWishlistStore()
     </div>
   </Card>
 </template>
-
-<style scoped>
-
-</style>

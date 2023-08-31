@@ -14,7 +14,3 @@ const props = defineProps({
     <a href="#" class="text-sm font-medium text-gray-900 underline hover:no-underline">{{ rating.count }} reviews</a>
   </div>
 </template>
-
-<style scoped>
-
-</style>
