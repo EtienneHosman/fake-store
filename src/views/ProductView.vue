@@ -51,7 +51,7 @@ onMounted(async () => {
           <div class="flex mb-4">
             <div class="mr-4">
               <span class="font-bold text-gray-700">Price:</span>
-              <span class="text-gray-600">${{ product.price }}</span>
+              <span class="text-gray-600">€{{ product.price }}</span>
             </div>
             <div>
               <span class="font-bold text-gray-700">Availability:</span>
